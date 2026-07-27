@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Residential interior styling, decorating consultations, room refreshes, and furnishings sourcing by Molly Angert.">
-  <meta name="theme-color" content="#f3efe8">
+  <meta name="theme-color" content="#f2eee7">
   <title>Molly Angert | Interior Styling & Decorating</title>
   <style>
     :root {
-      --ink: #25231f;
-      --muted: #6f6a61;
-      --paper: #f3efe8;
+      --ink: #27241f;
+      --muted: #70695f;
+      --paper: #f2eee7;
+      --paper-deep: #e8e0d5;
       --card: #fbf9f5;
-      --line: #d9d1c5;
-      --accent: #857563;
+      --line: #d8cfc2;
+      --clay: #a97962;
+      --olive: #76806c;
+      --sand: #cbbba6;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -25,26 +28,41 @@
       line-height: 1.6;
     }
     a { color: inherit; }
-    .wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 78px;
+      min-height: 80px;
       border-bottom: 1px solid var(--line);
     }
     .brand {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 24px;
+      display: flex;
+      flex-direction: column;
       text-decoration: none;
+      line-height: 1.12;
     }
-    .navlinks { display: flex; gap: 24px; }
+    .brand strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+    .brand span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .navlinks { display: flex; gap: 26px; }
     .navlinks a { text-decoration: none; color: var(--muted); font-size: 14px; }
-    header {
-      min-height: 72vh;
+    .hero {
+      min-height: 76vh;
       display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
       align-items: center;
-      padding: 88px 0;
+      padding: 82px 0 96px;
     }
     .eyebrow {
       margin: 0 0 18px;
@@ -56,78 +74,227 @@
     h1, h2 {
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      line-height: 1.02;
+      line-height: 1.03;
     }
-    h1 { max-width: 920px; margin: 0 0 28px; font-size: clamp(52px, 8vw, 98px); }
-    h2 { margin: 0 0 28px; font-size: clamp(38px, 5vw, 60px); }
-    .lead { max-width: 690px; margin: 0 0 34px; color: var(--muted); font-size: 20px; }
+    h1 { margin: 0 0 28px; font-size: clamp(50px, 7vw, 88px); }
+    h2 { margin: 0 0 28px; font-size: clamp(38px, 5vw, 58px); }
+    .lead { max-width: 660px; margin: 0 0 34px; color: var(--muted); font-size: 20px; }
     .button {
       display: inline-block;
-      padding: 13px 20px;
+      padding: 14px 21px;
       color: white;
       background: var(--ink);
       text-decoration: none;
       border-radius: 2px;
+      transition: transform .2s ease, opacity .2s ease;
     }
-    section { padding: 92px 0; border-top: 1px solid var(--line); }
+    .button:hover { transform: translateY(-2px); opacity: .88; }
+    .micro-note { margin: 18px 0 0; color: var(--muted); font-size: 13px; }
+    .hero-art {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      background: #ded6cb;
+      border: 1px solid var(--line);
+    }
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -45px;
+      top: -55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+    }
+    .hero-art svg { display: block; width: 100%; height: 100%; min-height: 520px; }
+    .palette {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      background: rgba(251,249,245,.92);
+      border: 1px solid rgba(39,36,31,.12);
+      box-shadow: 0 12px 30px rgba(39,36,31,.09);
+    }
+    .swatch { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(39,36,31,.12); }
+    .swatch.one { background: #f1ece4; }
+    .swatch.two { background: #a97962; }
+    .swatch.three { background: #76806c; }
+    .swatch.four { background: #3f3b35; }
+    .signature-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+    .signature-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .signature-item {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+    }
+    .signature-item + .signature-item { border-left: 1px solid var(--line); }
+    section { padding: 96px 0; border-top: 1px solid var(--line); }
+    .section-intro { max-width: 720px; margin-bottom: 42px; }
+    .section-intro p:last-child { color: var(--muted); font-size: 18px; }
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .card { padding: 30px; background: var(--card); border: 1px solid var(--line); }
-    .card h3 { margin: 0 0 12px; font-size: 18px; }
+    .card {
+      min-height: 260px;
+      padding: 30px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(39,36,31,.07); }
+    .card-number {
+      display: block;
+      margin-bottom: 52px;
+      color: var(--clay);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+    }
+    .card h3 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 400; }
     .card p { margin: 0; color: var(--muted); }
-    .about { max-width: 800px; color: var(--muted); font-size: 20px; }
+    .process { background: var(--paper-deep); }
+    .process-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+    .process-list { border-top: 1px solid var(--line); }
+    .process-row {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 20px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .process-row span { color: var(--clay); font-family: Georgia, "Times New Roman", serif; }
+    .process-row h3 { margin: 0 0 6px; font-size: 18px; }
+    .process-row p { margin: 0; color: var(--muted); }
+    .about-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 80px; }
+    .about-mark {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      max-width: 340px;
+      border-radius: 50%;
+      background: var(--olive);
+      color: #f7f3ec;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 7vw, 78px);
+      letter-spacing: -.04em;
+    }
+    .about-copy { max-width: 760px; color: var(--muted); font-size: 20px; }
     .contact-box {
       display: grid;
-      grid-template-columns: 1.4fr .6fr;
+      grid-template-columns: 1.3fr .7fr;
       gap: 48px;
       align-items: end;
     }
     .contact-note { color: var(--muted); }
     .email-link { font-weight: 600; overflow-wrap: anywhere; }
-    footer { padding: 36px 0 54px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
-    @media (max-width: 760px) {
-      .wrap { width: min(100% - 32px, 1120px); }
+    footer { padding: 38px 0 54px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; }
+    @media (max-width: 820px) {
+      .wrap { width: min(100% - 32px, 1160px); }
       .navlinks { display: none; }
-      header { min-height: auto; padding: 72px 0; }
-      section { padding: 68px 0; }
-      .grid, .contact-box { grid-template-columns: 1fr; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 42px; padding: 68px 0; }
+      .hero-art, .hero-art svg { min-height: 420px; }
+      .signature-inner, .grid, .process-grid, .about-layout, .contact-box { grid-template-columns: 1fr; }
+      .signature-item + .signature-item { border-left: 0; border-top: 1px solid var(--line); }
+      section { padding: 72px 0; }
+      .process-grid, .about-layout { gap: 44px; }
+      .about-mark { max-width: 240px; }
+      .footer-inner { flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <nav aria-label="Main navigation">
-      <a class="brand" href="#top">Molly Angert</a>
+      <a class="brand" href="#top"><strong>Molly Angert</strong><span>Interior Styling & Decorating</span></a>
       <div class="navlinks">
         <a href="#services">Services</a>
+        <a href="#process">Process</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
 
-    <header id="top">
+    <header class="hero" id="top">
       <div>
         <p class="eyebrow">Residential Interior Styling</p>
         <h1>Thoughtful rooms designed around real life.</h1>
-        <p class="lead">Molly Angert provides approachable interior decorating, room refreshes, and furnishings sourcing for comfortable, polished homes.</p>
+        <p class="lead">Approachable interior decorating, room refreshes, and furnishings sourcing for homes that feel comfortable, polished, and personal.</p>
         <a class="button" href="mailto:mollyangertdesign@gmail.com">Start a conversation</a>
+        <p class="micro-note">Project scope and fees are confirmed before work begins.</p>
+      </div>
+      <div class="hero-art" aria-label="Stylized illustration of a thoughtfully designed living room">
+        <svg viewBox="0 0 620 680" role="img" aria-hidden="true">
+          <rect width="620" height="680" fill="#ded6cb"/>
+          <rect x="52" y="55" width="516" height="470" fill="#eee9e1"/>
+          <rect x="85" y="88" width="190" height="190" fill="#b8a997"/>
+          <rect x="101" y="104" width="158" height="158" fill="#f5f1ea"/>
+          <circle cx="180" cy="183" r="48" fill="#a97962" opacity=".82"/>
+          <path d="M315 105h177v173H315z" fill="#f4efe8"/>
+          <path d="M339 230c30-82 70-108 130-82" fill="none" stroke="#76806c" stroke-width="11" stroke-linecap="round"/>
+          <path d="M353 242c24-52 58-72 104-55" fill="none" stroke="#c3b3a0" stroke-width="8" stroke-linecap="round"/>
+          <rect x="111" y="370" width="330" height="112" rx="16" fill="#887d70"/>
+          <rect x="132" y="341" width="112" height="72" rx="14" fill="#9c9183"/>
+          <rect x="255" y="341" width="144" height="72" rx="14" fill="#9c9183"/>
+          <rect x="126" y="459" width="18" height="67" fill="#4c463f"/>
+          <rect x="410" y="459" width="18" height="67" fill="#4c463f"/>
+          <rect x="248" y="423" width="70" height="38" rx="5" fill="#cbbba6"/>
+          <rect x="350" y="429" width="45" height="31" rx="4" fill="#76806c"/>
+          <ellipse cx="294" cy="575" rx="190" ry="46" fill="#c9b59c" opacity=".78"/>
+          <rect x="454" y="306" width="10" height="198" fill="#3f3b35"/>
+          <path d="M419 303h80l-18-53h-44z" fill="#d7b795"/>
+          <circle cx="459" cy="510" r="24" fill="#3f3b35"/>
+          <path d="M68 526h486" stroke="#b8afa4" stroke-width="2"/>
+          <rect x="72" y="525" width="476" height="95" fill="#d4ccc1"/>
+          <path d="M513 418c-41-68-73-74-102-39 19 1 33 11 42 30-28-10-49-2-62 24 32-1 55 11 70 36" fill="#76806c"/>
+          <rect x="445" y="465" width="67" height="73" rx="8" fill="#a97962"/>
+        </svg>
+        <div class="palette" aria-label="Warm neutral color palette">
+          <span class="swatch one"></span><span class="swatch two"></span><span class="swatch three"></span><span class="swatch four"></span>
+        </div>
       </div>
     </header>
   </div>
 
+  <div class="signature-strip">
+    <div class="wrap signature-inner">
+      <div class="signature-item">Thoughtful</div>
+      <div class="signature-item">Approachable</div>
+      <div class="signature-item">Personal</div>
+    </div>
+  </div>
+
   <section id="services">
     <div class="wrap">
-      <p class="eyebrow">Services</p>
-      <h2>Practical design help, tailored to the room.</h2>
+      <div class="section-intro">
+        <p class="eyebrow">Services</p>
+        <h2>Practical design help, tailored to the room.</h2>
+        <p>Support can be focused on a single decision or expanded into a cohesive room plan, depending on what the space needs.</p>
+      </div>
       <div class="grid">
         <article class="card">
+          <span class="card-number">01</span>
           <h3>Design Consultations</h3>
           <p>Focused guidance on layout, color, lighting, textiles, and the decisions holding a room back.</p>
         </article>
         <article class="card">
+          <span class="card-number">02</span>
           <h3>Room Refreshes</h3>
           <p>A cohesive plan that works with existing pieces while identifying the additions that will make the greatest difference.</p>
         </article>
         <article class="card">
+          <span class="card-number">03</span>
           <h3>Furnishings & Decor Sourcing</h3>
           <p>Curated recommendations for furniture, rugs, window treatments, lighting, art, and finishing details.</p>
         </article>
@@ -135,11 +302,28 @@
     </div>
   </section>
 
+  <section class="process" id="process">
+    <div class="wrap process-grid">
+      <div>
+        <p class="eyebrow">The Process</p>
+        <h2>A clear path from questions to a finished room.</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-row"><span>01</span><div><h3>Listen</h3><p>Understand the room, the practical needs, what is staying, and what does not feel right.</p></div></div>
+        <div class="process-row"><span>02</span><div><h3>Curate</h3><p>Develop a focused direction for layout, palette, furnishings, and the details that connect them.</p></div></div>
+        <div class="process-row"><span>03</span><div><h3>Refine</h3><p>Narrow the choices into a plan that feels cohesive, attainable, and specific to the home.</p></div></div>
+      </div>
+    </div>
+  </section>
+
   <section id="about">
-    <div class="wrap">
-      <p class="eyebrow">About</p>
-      <h2>Warm, collected spaces without unnecessary complication.</h2>
-      <p class="about">Molly Angert helps clients create rooms that feel considered, comfortable, and personal. Each engagement begins with a clear understanding of the client’s needs, existing pieces, budget, and timeline. Services are offered by consultation, with scope and fees confirmed before work begins.</p>
+    <div class="wrap about-layout">
+      <div class="about-mark" aria-hidden="true">MA</div>
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Warm, collected spaces without unnecessary complication.</h2>
+        <p class="about-copy">Molly Angert helps clients create rooms that feel considered, comfortable, and personal. Each engagement begins with a clear understanding of the client’s needs, existing pieces, budget, and timeline. Services are offered by consultation, with scope and fees confirmed before work begins.</p>
+      </div>
     </div>
   </section>
 
@@ -158,7 +342,7 @@
   </section>
 
   <footer>
-    <div class="wrap">© 2026 Molly Angert. All rights reserved.</div>
+    <div class="wrap footer-inner"><span>© 2026 Molly Angert. All rights reserved.</span><span>Residential Interior Styling & Decorating</span></div>
   </footer>
 </body>
 </html>
