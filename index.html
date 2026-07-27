@@ -90,40 +90,142 @@
     }
     .button:hover { transform: translateY(-2px); opacity: .88; }
     .micro-note { margin: 18px 0 0; color: var(--muted); font-size: 13px; }
+
     .hero-art {
-      position: relative;
       min-height: 520px;
-      overflow: hidden;
-      background: #ded6cb;
+      padding: 24px;
+      background: #d8d0c5;
       border: 1px solid var(--line);
+      box-shadow: 0 24px 55px rgba(39,36,31,.08);
     }
-    .hero-art::before {
+    .board {
+      min-height: 470px;
+      padding: 22px;
+      background: #f7f3ec;
+      border: 1px solid rgba(39,36,31,.12);
+    }
+    .board-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #d8cfc2;
+      color: #70695f;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .board-grid {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .board-card {
+      min-height: 310px;
+      background: #fffdf9;
+      border: 1px solid #ded6cb;
+    }
+    .material-study {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      overflow: hidden;
+    }
+    .material-composition {
+      position: relative;
+      min-height: 255px;
+      background: #e9e2d8;
+      overflow: hidden;
+    }
+    .material-composition .arch {
+      position: absolute;
+      left: 28px;
+      top: 30px;
+      width: 115px;
+      height: 165px;
+      border-radius: 60px 60px 0 0;
+      background: #b9866e;
+    }
+    .material-composition .panel {
+      position: absolute;
+      right: 28px;
+      top: 38px;
+      width: 105px;
+      height: 135px;
+      background: #737e6b;
+    }
+    .material-composition .panel::after {
       content: "";
       position: absolute;
-      width: 170px;
-      height: 170px;
-      right: -45px;
-      top: -55px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.35);
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,.48);
     }
-    .hero-art svg { display: block; width: 100%; height: 100%; min-height: 520px; }
-    .palette {
+    .material-composition .stone {
       position: absolute;
-      left: 24px;
-      bottom: 24px;
-      display: flex;
-      gap: 8px;
-      padding: 10px;
-      background: rgba(251,249,245,.92);
-      border: 1px solid rgba(39,36,31,.12);
-      box-shadow: 0 12px 30px rgba(39,36,31,.09);
+      left: 58px;
+      bottom: 28px;
+      width: 180px;
+      height: 54px;
+      border-radius: 50%;
+      background: #c8b79f;
+      transform: rotate(-5deg);
     }
-    .swatch { width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(39,36,31,.12); }
-    .swatch.one { background: #f1ece4; }
-    .swatch.two { background: #a97962; }
-    .swatch.three { background: #76806c; }
-    .swatch.four { background: #3f3b35; }
+    .material-composition .line-one,
+    .material-composition .line-two,
+    .material-composition .line-three {
+      position: absolute;
+      right: 35px;
+      width: 74px;
+      height: 1px;
+      background: rgba(39,36,31,.28);
+    }
+    .material-composition .line-one { bottom: 62px; }
+    .material-composition .line-two { bottom: 48px; width: 58px; }
+    .material-composition .line-three { bottom: 34px; width: 42px; }
+    .card-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 13px 14px;
+      color: #70695f;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-top: 1px solid #ded6cb;
+    }
+    .plan-card { padding: 14px; }
+    .plan-title {
+      margin-bottom: 10px;
+      color: #70695f;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .plan-card svg { display: block; width: 100%; height: 272px; }
+    .board-footer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .finish {
+      padding: 10px;
+      background: #fffdf9;
+      border: 1px solid #ded6cb;
+    }
+    .finish-chip { height: 28px; margin-bottom: 8px; }
+    .finish-chip.plaster { background: #eee8df; }
+    .finish-chip.oak { background: #c9b28f; }
+    .finish-chip.clay { background: #a97962; }
+    .finish-chip.olive { background: #76806c; }
+    .finish span {
+      display: block;
+      color: #70695f;
+      font-size: 9px;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
     .signature-strip {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -204,7 +306,10 @@
       .wrap { width: min(100% - 32px, 1160px); }
       .navlinks { display: none; }
       .hero { min-height: auto; grid-template-columns: 1fr; gap: 42px; padding: 68px 0; }
-      .hero-art, .hero-art svg { min-height: 420px; }
+      .hero-art { min-height: 0; padding: 14px; }
+      .board { min-height: 0; padding: 14px; }
+      .board-grid { grid-template-columns: 1fr; }
+      .board-card { min-height: 0; }
       .signature-inner, .grid, .process-grid, .about-layout, .contact-box { grid-template-columns: 1fr; }
       .signature-item + .signature-item { border-left: 0; border-top: 1px solid var(--line); }
       section { padding: 72px 0; }
@@ -234,34 +339,58 @@
         <a class="button" href="mailto:mollyangertdesign@gmail.com">Start a conversation</a>
         <p class="micro-note">Project scope and fees are confirmed before work begins.</p>
       </div>
-      <div class="hero-art" aria-label="Stylized illustration of a thoughtfully designed living room">
-        <svg viewBox="0 0 620 680" role="img" aria-hidden="true">
-          <rect width="620" height="680" fill="#ded6cb"/>
-          <rect x="52" y="55" width="516" height="470" fill="#eee9e1"/>
-          <rect x="85" y="88" width="190" height="190" fill="#b8a997"/>
-          <rect x="101" y="104" width="158" height="158" fill="#f5f1ea"/>
-          <circle cx="180" cy="183" r="48" fill="#a97962" opacity=".82"/>
-          <path d="M315 105h177v173H315z" fill="#f4efe8"/>
-          <path d="M339 230c30-82 70-108 130-82" fill="none" stroke="#76806c" stroke-width="11" stroke-linecap="round"/>
-          <path d="M353 242c24-52 58-72 104-55" fill="none" stroke="#c3b3a0" stroke-width="8" stroke-linecap="round"/>
-          <rect x="111" y="370" width="330" height="112" rx="16" fill="#887d70"/>
-          <rect x="132" y="341" width="112" height="72" rx="14" fill="#9c9183"/>
-          <rect x="255" y="341" width="144" height="72" rx="14" fill="#9c9183"/>
-          <rect x="126" y="459" width="18" height="67" fill="#4c463f"/>
-          <rect x="410" y="459" width="18" height="67" fill="#4c463f"/>
-          <rect x="248" y="423" width="70" height="38" rx="5" fill="#cbbba6"/>
-          <rect x="350" y="429" width="45" height="31" rx="4" fill="#76806c"/>
-          <ellipse cx="294" cy="575" rx="190" ry="46" fill="#c9b59c" opacity=".78"/>
-          <rect x="454" y="306" width="10" height="198" fill="#3f3b35"/>
-          <path d="M419 303h80l-18-53h-44z" fill="#d7b795"/>
-          <circle cx="459" cy="510" r="24" fill="#3f3b35"/>
-          <path d="M68 526h486" stroke="#b8afa4" stroke-width="2"/>
-          <rect x="72" y="525" width="476" height="95" fill="#d4ccc1"/>
-          <path d="M513 418c-41-68-73-74-102-39 19 1 33 11 42 30-28-10-49-2-62 24 32-1 55 11 70 36" fill="#76806c"/>
-          <rect x="445" y="465" width="67" height="73" rx="8" fill="#a97962"/>
-        </svg>
-        <div class="palette" aria-label="Warm neutral color palette">
-          <span class="swatch one"></span><span class="swatch two"></span><span class="swatch three"></span><span class="swatch four"></span>
+
+      <div class="hero-art" aria-label="Interior design concept board with material palette and floor plan">
+        <div class="board">
+          <div class="board-header">
+            <span>Room Study 01</span>
+            <span>Warm · Quiet · Lived-in</span>
+          </div>
+
+          <div class="board-grid">
+            <div class="board-card material-study">
+              <div class="material-composition" aria-hidden="true">
+                <div class="arch"></div>
+                <div class="panel"></div>
+                <div class="stone"></div>
+                <div class="line-one"></div>
+                <div class="line-two"></div>
+                <div class="line-three"></div>
+              </div>
+              <div class="card-caption"><span>Material Study</span><span>01 / 04</span></div>
+            </div>
+
+            <div class="board-card plan-card">
+              <div class="plan-title">Living Room Plan</div>
+              <svg viewBox="0 0 360 300" role="img" aria-label="Simple living room floor plan">
+                <rect x="20" y="18" width="320" height="250" fill="#faf7f1" stroke="#5f5a52" stroke-width="2"/>
+                <line x1="20" y1="88" x2="20" y2="150" stroke="#faf7f1" stroke-width="6"/>
+                <path d="M20 150 A62 62 0 0 1 82 88" fill="none" stroke="#8d857a" stroke-width="1.5"/>
+                <line x1="20" y1="150" x2="82" y2="150" stroke="#8d857a" stroke-width="1.5"/>
+
+                <rect x="86" y="185" width="188" height="47" rx="4" fill="#d3c8ba" stroke="#5f5a52" stroke-width="1.5"/>
+                <line x1="148" y1="185" x2="148" y2="232" stroke="#8d857a" stroke-width="1"/>
+                <line x1="212" y1="185" x2="212" y2="232" stroke="#8d857a" stroke-width="1"/>
+
+                <rect x="105" y="78" width="150" height="76" fill="#eee7dd" stroke="#9b9083" stroke-width="1.25" stroke-dasharray="5 4"/>
+                <ellipse cx="180" cy="116" rx="38" ry="24" fill="#c5b49c" stroke="#5f5a52" stroke-width="1.25"/>
+
+                <rect x="43" y="48" width="54" height="54" rx="5" fill="#79816f" stroke="#5f5a52" stroke-width="1.25"/>
+                <rect x="263" y="48" width="54" height="54" rx="5" fill="#aa7c65" stroke="#5f5a52" stroke-width="1.25"/>
+                <circle cx="62" cy="210" r="16" fill="none" stroke="#8d857a" stroke-width="1.25"/>
+                <circle cx="298" cy="210" r="16" fill="none" stroke="#8d857a" stroke-width="1.25"/>
+
+                <text x="180" y="289" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" letter-spacing="1.2" fill="#70695f">NOT TO SCALE · CONCEPT ONLY</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="board-footer" aria-label="Selected finish palette">
+            <div class="finish"><div class="finish-chip plaster"></div><span>Plaster</span></div>
+            <div class="finish"><div class="finish-chip oak"></div><span>Natural Oak</span></div>
+            <div class="finish"><div class="finish-chip clay"></div><span>Clay</span></div>
+            <div class="finish"><div class="finish-chip olive"></div><span>Olive</span></div>
+          </div>
         </div>
       </div>
     </header>
