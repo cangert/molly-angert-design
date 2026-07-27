@@ -139,49 +139,62 @@
     }
     .material-composition .arch {
       position: absolute;
-      left: 28px;
-      top: 30px;
-      width: 115px;
-      height: 165px;
-      border-radius: 60px 60px 0 0;
+      left: 30px;
+      top: 34px;
+      width: 112px;
+      height: 158px;
+      border-radius: 58px 58px 0 0;
       background: #b9866e;
     }
     .material-composition .panel {
       position: absolute;
-      right: 28px;
-      top: 38px;
-      width: 105px;
-      height: 135px;
+      right: 26px;
+      top: 34px;
+      width: 108px;
+      height: 122px;
       background: #737e6b;
+      border: 10px solid #f7f3ec;
+      box-shadow: 8px 8px 0 #cfc3b4;
     }
     .material-composition .panel::after {
       content: "";
       position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(255,255,255,.48);
+      inset: 12px;
+      border: 1px solid rgba(255,255,255,.55);
     }
     .material-composition .stone {
       position: absolute;
-      left: 58px;
-      bottom: 28px;
-      width: 180px;
-      height: 54px;
-      border-radius: 50%;
-      background: #c8b79f;
-      transform: rotate(-5deg);
+      left: 47px;
+      bottom: 27px;
+      width: 142px;
+      height: 48px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #d2c4b1, #bfae97);
+      box-shadow: 0 7px 0 rgba(112,105,95,.12);
     }
     .material-composition .line-one,
     .material-composition .line-two,
     .material-composition .line-three {
       position: absolute;
-      right: 35px;
-      width: 74px;
-      height: 1px;
-      background: rgba(39,36,31,.28);
+      right: 31px;
+      height: 7px;
+      border-radius: 999px;
     }
-    .material-composition .line-one { bottom: 62px; }
-    .material-composition .line-two { bottom: 48px; width: 58px; }
-    .material-composition .line-three { bottom: 34px; width: 42px; }
+    .material-composition .line-one {
+      bottom: 67px;
+      width: 78px;
+      background: #cdbca8;
+    }
+    .material-composition .line-two {
+      bottom: 48px;
+      width: 60px;
+      background: #a97962;
+    }
+    .material-composition .line-three {
+      bottom: 29px;
+      width: 42px;
+      background: #46423c;
+    }
     .card-caption {
       display: flex;
       justify-content: space-between;
